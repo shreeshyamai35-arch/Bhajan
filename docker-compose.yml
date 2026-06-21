@@ -1,0 +1,55 @@
+# BhajanForge — local stack. NO GPU REQUIRED.
+# All heavy audio AI runs via cloud APIs (Suno gateway, Replicate, LALAL.AI, LANDR).
+# These containers are lightweight CPU services + Qdrant.
+services:
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  suno-mcp:
+    build: { context: ., dockerfile: Dockerfile }
+    command: python -m bhajanforge.mcp_servers.suno_mcp
+    env_file: [.env]
+    volumes:
+      - ./:/app
+
+  rvc-mcp:
+    build: { context: ., dockerfile: Dockerfile }
+    command: python -m bhajanforge.mcp_servers.rvc_mcp
+    env_file: [.env]
+    volumes:
+      - ./:/app
+      - ./models:/app/models
+
+  stem-mcp:
+    build: { context: ., dockerfile: Dockerfile }
+    command: python -m bhajanforge.mcp_servers.stem_mcp
+    env_file: [.env]
+    volumes:
+      - ./:/app
+      - ./models:/app/models
+
+  audio-mcp:
+    build: { context: ., dockerfile: Dockerfile }
+    command: python -m bhajanforge.mcp_servers.audio_mcp
+    env_file: [.env]
+    volumes:
+      - ./:/app
+
+  api:
+    build: { context: ., dockerfile: Dockerfile }
+    command: uvicorn bhajanforge.api:app --host 0.0.0.0 --port 8000
+    env_file: [.env]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+      - ./output:/app/output
+    depends_on: [qdrant, suno-mcp, rvc-mcp, stem-mcp, audio-mcp]
+
+volumes:
+  qdrant_data:

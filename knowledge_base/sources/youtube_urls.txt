@@ -1,0 +1,7 @@
+# Artist's existing bhajan YouTube URLs — one per line.
+# Used for BOTH:
+#   1) RAG ingestion (ASR transcription -> artist_lyrics)
+#   2) Voice-model training (vocals isolated via uvr-mcp -> rvc.train)
+# TODO(artist): paste your 10+ bhajan URLs below.
+# https://www.youtube.com/watch?v=XXXXXXXXXXX
+# https://www.youtube.com/watch?v=YYYYYYYYYYY

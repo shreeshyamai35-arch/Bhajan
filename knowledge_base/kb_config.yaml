@@ -1,0 +1,25 @@
+# RAG ingestion settings (read by rag/ingest.py)
+collection: bhajan_kb            # overridden by QDRANT_COLLECTION env if set
+distance: cosine
+
+chunking:
+  strategy: recursive
+  chunk_size_tokens: 400
+  chunk_overlap_tokens: 60
+  # lyrics: keep sections intact where possible
+  respect_section_boundaries: true
+
+embedding:
+  # provider/model come from .env (EMBEDDING_PROVIDER / EMBEDDING_MODEL)
+  normalize: true
+  batch_size: 32
+
+retrieval:
+  default_top_k: 6
+  buckets:
+    style:        { doc_types: [artist_lyrics, style_notes], top_k: 4 }
+    facts:        { doc_types: [scripture, traditional_bhajan], top_k: 4 }
+    music:        { doc_types: [taal_raag], top_k: 2 }
+    pronunciation:{ doc_types: [pronunciation], top_k: 6 }
+
+payload_fields: [doc_type, title, language, source, chunk_id, public_domain]

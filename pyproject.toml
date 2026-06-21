@@ -1,0 +1,50 @@
+[project]
+name = "bhajanforge"
+version = "1.0.0"
+description = "Autonomous AI bhajan production system (Suno + cloud RVC + RAG, multi-agent, no GPU)"
+requires-python = ">=3.11"
+readme = "README.md"
+dependencies = [
+  "langgraph",
+  "langchain",
+  "langchain-core",
+  "pydantic>=2",
+  "fastapi",
+  "uvicorn[standard]",
+  "typer",
+  "python-dotenv",
+  "pyyaml",
+  "tenacity",
+  "mcp",
+  "replicate",
+  "httpx",
+  "librosa",
+  "soundfile",
+  "pydub",
+  "pyloudnorm",
+  "numpy",
+  "scipy",
+  "matchering",
+  "qdrant-client",
+  "yt-dlp",
+  "google-api-python-client",
+  "google-auth-oauthlib",
+  "browser-use",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio", "ruff"]
+
+[project.scripts]
+bhajanforge = "bhajanforge.cli:app"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

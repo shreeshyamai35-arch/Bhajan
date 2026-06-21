@@ -1,0 +1,101 @@
+# BhajanForge — Learning File (Persistent Memory)
+# Agents READ this before acting and WRITE to it after each run.
+# This is the mechanism by which quality compounds over time.
+# Codex: implement read/write in src/bhajanforge/memory/learning.py with a schema
+# validator. Treat unknown keys as forward-compatible (don't crash).
+
+schema_version: 1
+
+# ---------------------------------------------------------------------------
+# ARTIST VOICE PROFILE
+# ---------------------------------------------------------------------------
+voice_profile:
+  artist_name: "Shyam Bhajan Artist"      # TODO(clarify): real channel/artist name
+  language: "hi"
+  active_rvc_model: null                   # cloud model reference after training
+  active_rvc_provider: "replicate"         # replicate | colab_tunnel | kaggle_tunnel | kits
+  reference_embedding: null                # path to speaker embedding for similarity
+  range:
+    # Auto-detected from training audio by rvc.detect_range (FR-12b) and written
+    # back here. Defaults below are a sensible male-bhajan-singer starting point.
+    auto_detect: true
+    low_note: "A2"
+    high_note: "E4"
+    median_note: "C3"
+  # Best-known RVC inference settings (updated by Voice Agent / Quality loop)
+  best_settings:
+    pitch_shift_semitones: 0
+    index_ratio: 0.75
+    f0_method: "rmvpe"                      # rmvpe | crepe | fcpe
+    protect_voiceless: 0.33
+    resample_sr: 48000
+
+# ---------------------------------------------------------------------------
+# MUSIC GENERATION (SUNO) — winning prompt templates per mood
+# ---------------------------------------------------------------------------
+music_preferences:
+  default_model_tag: "suno-v5.5"
+  winning_prompts:
+    slow_emotional: >
+      Devotional Khatu Shyam bhajan, solo male voice, slow and emotional,
+      harmonium + bansuri (flute) + soft tabla + tanpura drone, Keherwa taal,
+      reverberant temple ambience, 70 BPM, Hindi lyrics, aarti-style ending.
+    celebratory: >
+      Joyful Shyam Baba bhajan, energetic, dholak + manjira + claps + harmonium,
+      fast Keherwa, 120 BPM, call-and-response chorus feel, Hindi lyrics.
+    meditative: >
+      Meditative Shyam stuti, sparse, tanpura + soft bansuri + light tabla,
+      Dadra taal, 60 BPM, serene, Hindi, long sustained phrases.
+  rejected_styles:
+    - "heavy synth / EDM"
+    - "western drum kit"
+    - "auto-tuned pop vocals"
+  notes: []
+
+# ---------------------------------------------------------------------------
+# PRONUNCIATION FIXES (devotional terms Suno tends to get wrong)
+# key = term as written; value = guidance/IPA-ish hint or phonetic respelling
+# ---------------------------------------------------------------------------
+pronunciation_fixes:
+  "श्याम / Shyam": "shyaam — hold the long 'aa', soft sh"
+  "खाटू / Khatu": "khaa-tu — aspirated kh, soft t"
+  "श्याम बाबा / Shyam Baba": "shyaam baabaa"
+  "दर्शन / Darshan": "dar-shan — clear r"
+  "आरती / Aarti": "aar-tee"
+
+# ---------------------------------------------------------------------------
+# MIX / MASTER PREFERENCES
+# ---------------------------------------------------------------------------
+mix_preferences:
+  reverb_preset: "temple_hall"
+  reverb_predelay_ms: 30
+  vocal_eq: "presence_boost_3k_gentle_lowcut_100hz"
+  compression: "vocal_smooth_3to1"
+  master_reference_track: null             # optional: a reference master for matchering
+
+# ---------------------------------------------------------------------------
+# QUALITY HISTORY (append one entry per completed run)
+# ---------------------------------------------------------------------------
+quality_history: []
+# Example entry shape (Codex: append objects like this):
+# - run_id: "2026-06-21_morning-darshan"
+#   theme: "morning darshan"
+#   mood: "slow_emotional"
+#   judge_score: 96
+#   voice_similarity: 0.972
+#   lufs: -14.1
+#   true_peak_dbtp: -1.2
+#   loops_used: 1
+#   winning_prompt_key: "slow_emotional"
+#   fixes_applied:
+#     - "increased reverb predelay to 30ms"
+#     - "index_ratio 0.70 -> 0.75 for clarity"
+#   published: false
+
+# ---------------------------------------------------------------------------
+# GLOBAL COUNTERS (auto-maintained)
+# ---------------------------------------------------------------------------
+stats:
+  total_runs: 0
+  total_published: 0
+  avg_judge_score: null
