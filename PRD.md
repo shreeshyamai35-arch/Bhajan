@@ -129,7 +129,9 @@ Full agent specs in `docs/AGENTS.md`. Orchestration graph in `docs/ORCHESTRATION
 ### 5.3 Tool Layer (MCP servers & APIs — see `docs/MCP_SERVERS.md`)
 - **suno-mcp** (music generation + stem extraction) — PRIMARY music source, API-first.
 - **rvc-mcp** (**cloud** RVC voice conversion + training via Replicate; no local GPU).
-- **stem-mcp** (**cloud** stem separation via LALAL.AI / Replicate Demucs).
+- **stem-mcp** (stem separation — used ONLY for one-time voice-training prep from
+  the artist's existing songs; FREE Colab/Kaggle recommended, LALAL/Replicate
+  optional). Production stems come from **Suno** itself.
 - **audio-mcp** (librosa/ffmpeg analysis + mixing; mastering via **LANDR API**,
   matchering fallback; cloud ASR).
 - **browser-agent** (Browser Use) — OPTIONAL fallback for UI-only tools (ACE Studio;
@@ -251,7 +253,8 @@ Full agent specs in `docs/AGENTS.md`. Orchestration graph in `docs/ORCHESTRATION
 | MCP | **Model Context Protocol Python SDK** | build & consume MCP servers |
 | Music | **Suno via suno-mcp** | 3rd-party Suno API gateway (API-first) behind MCP |
 | Voice clone | **Cloud RVC via Replicate** wrapped as rvc-mcp | no local GPU; FREE Colab/Kaggle or Kits.AI alts |
-| Stem split | **Cloud LALAL.AI** wrapped as stem-mcp | no local GPU; FREE Colab/Kaggle or Replicate Demucs alts |
+| Stems (production) | **Suno built-in** `extract_stems` | FREE (part of Suno); no separate tool |
+| Stems (training prep only) | stem-mcp: FREE Colab/Kaggle | one-time, for vocals from old songs; LALAL/Replicate optional |
 | Audio DSP | **librosa, pydub, ffmpeg, pyloudnorm** | CPU analysis + processing |
 | Mastering | **LANDR API** (primary) + **matchering** (fallback) | cloud label-grade |
 | ASR | **cloud ASR** (multilingual, Hindi) | pronunciation check |

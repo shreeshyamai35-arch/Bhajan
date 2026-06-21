@@ -119,13 +119,17 @@ differs. Trained-model **references/metadata** are stored in `RVC_MODELS_DIR`
 
 ---
 
-## 3. stem-mcp  (Stem separation — CLOUD, no local GPU)
+## 3. stem-mcp  (Stem separation — only for voice-training prep)
 
-Wraps a cloud stem provider (`STEM_PROVIDER`): **lalal** (LALAL.AI, default) or
-**replicate** (Demucs), or a FREE **colab_tunnel** / **kaggle_tunnel** notebook
-backend (`STEM_TUNNEL_URL`, see `notebooks/README.md`). Used to (a) prep RVC
-training data from the artist's existing songs, (b) clean a guide vocal if Suno
-stems are unavailable.
+> **In the production pipeline, stems come from Suno itself** (`suno.extract_stems`)
+> — no separate tool or cost. This `stem-mcp` server is needed ONLY for the
+> **one-time** job of extracting the artist's vocals from their EXISTING
+> (non-Suno) YouTube songs to build the RVC training dataset, and as a rare
+> fallback to clean a Suno guide vocal if Suno stems are unavailable.
+
+Wraps a stem provider (`STEM_PROVIDER`): a FREE **colab_tunnel** / **kaggle_tunnel**
+notebook backend (recommended, see `notebooks/README.md`), or paid **lalal**
+(LALAL.AI) / **replicate** (Demucs).
 
 ### Tools
 

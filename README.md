@@ -40,7 +40,8 @@ notebook). BhajanForge runs on any normal CPU machine/laptop.
 | Qdrant | RAG vector store (via docker-compose) |
 | A Suno-compatible API endpoint (recommended) | music generation (API-first) |
 | Replicate token **or** a free Colab/Kaggle GPU notebook | voice cloning (RVC) |
-| LALAL.AI key (or Replicate/free notebook) | stem separation |
+| (Stems in production come from **Suno** — free, built-in) | — |
+| Free Colab/Kaggle notebook (or LALAL.AI, optional) | stem separation for one-time voice-training prep |
 | LANDR API key | label-grade mastering (matchering used as free fallback) |
 | Cloud ASR key | pronunciation checking |
 | LLM + embedding provider keys | agents + RAG |
