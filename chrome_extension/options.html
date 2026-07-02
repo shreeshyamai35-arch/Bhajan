@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="popup.css"/>
+<title>BhajanForge — Settings</title>
+<style>body{width:460px}</style>
+</head>
+<body>
+  <header>
+    <div class="om">&#x1F549;</div>
+    <div class="titles">
+      <h1>Settings</h1>
+      <p class="sub">BhajanForge extension</p>
+    </div>
+  </header>
+  <div class="wrap">
+    <label>API base URL</label>
+    <input id="apiBase" placeholder="http://localhost:8000"/>
+    <p class="muted">Where your BhajanForge FastAPI server is running.</p>
+
+    <label>Colab notebook URL</label>
+    <input id="colabUrl" placeholder="https://colab.research.google.com/github/…"/>
+    <p class="muted">Opens the free voice-training notebook in one click.</p>
+
+    <button id="save">Save</button>
+    <p id="status" class="muted" style="text-align:center;margin-top:10px"></p>
+  </div>
+<script src="options.js"></script>
+</body>
+</html>

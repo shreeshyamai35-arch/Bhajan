@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="popup.css"/>
+<title>BhajanForge</title>
+</head>
+<body>
+  <header>
+    <div class="om">&#x1F549;</div>
+    <div class="titles">
+      <h1>BhajanForge</h1>
+      <p class="sub">Devotional bhajan production</p>
+    </div>
+    <span id="dot" class="dot" title="API status"></span>
+  </header>
+
+  <div class="wrap">
+    <label>Theme</label>
+    <input id="theme" value="morning darshan of Khatu Shyam"/>
+
+    <div class="row">
+      <div>
+        <label>Mood</label>
+        <select id="mood">
+          <option value="slow-emotional">slow-emotional</option>
+          <option value="celebratory">celebratory</option>
+          <option value="meditative">meditative</option>
+        </select>
+      </div>
+      <div>
+        <label>Deity</label>
+        <input id="deity" value="Khatu Shyam"/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div><label>Taal</label><input id="taal" value="keherwa"/></div>
+      <div><label>Tempo (BPM)</label><input id="tempo" type="number" value="72"/></div>
+    </div>
+
+    <label>Your own lyrics (optional)</label>
+    <textarea id="lyrics" rows="4" placeholder="Paste your bhajan lyrics to use them exactly. Leave blank and the AI writes authentic lyrics."></textarea>
+
+    <button id="go">Produce bhajan</button>
+
+    <div id="result" class="result" style="display:none">
+      <div id="out"></div>
+    </div>
+
+    <div class="footer">
+      <a id="colab" href="#" target="_blank">&#x1F3A4; Get Voice Trainer + open Colab</a>
+      <a id="opts" href="#">&#x2699; Settings</a>
+    </div>
+  </div>
+
+<script src="popup.js"></script>
+</body>
+</html>

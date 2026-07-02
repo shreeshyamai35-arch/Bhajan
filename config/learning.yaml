@@ -1,0 +1,107 @@
+schema_version: 1
+voice_profile:
+  artist_name: Shyam Bhajan Artist
+  language: hi
+  active_rvc_model: null
+  active_rvc_provider: replicate
+  reference_embedding: null
+  range:
+    auto_detect: true
+    low_note: A2
+    high_note: E4
+    median_note: C3
+  best_settings:
+    pitch_shift_semitones: 0
+    index_ratio: 0.75
+    f0_method: rmvpe
+    protect_voiceless: 0.33
+    resample_sr: 48000
+    model_name: shyam_voice_v1
+music_preferences:
+  default_model_tag: suno-v5.5
+  winning_prompts:
+    slow_emotional: 'Devotional Khatu Shyam bhajan, solo male voice, slow and emotional,
+      harmonium + bansuri (flute) + soft tabla + tanpura drone, Keherwa taal, reverberant
+      temple ambience, 70 BPM, Hindi lyrics, aarti-style ending.
+
+      '
+    celebratory: 'Joyful Shyam Baba bhajan, energetic, dholak + manjira + claps +
+      harmonium, fast Keherwa, 120 BPM, call-and-response chorus feel, Hindi lyrics.
+
+      '
+    meditative: 'Meditative Shyam stuti, sparse, tanpura + soft bansuri + light tabla,
+      Dadra taal, 60 BPM, serene, Hindi, long sustained phrases.
+
+      '
+  rejected_styles:
+  - heavy synth / EDM
+  - western drum kit
+  - auto-tuned pop vocals
+  notes: []
+pronunciation_fixes:
+  श्याम / Shyam: shyaam — hold the long 'aa', soft sh
+  खाटू / Khatu: khaa-tu — aspirated kh, soft t
+  श्याम बाबा / Shyam Baba: shyaam baabaa
+  दर्शन / Darshan: dar-shan — clear r
+  आरती / Aarti: aar-tee
+mix_preferences:
+  reverb_preset: temple_hall
+  reverb_predelay_ms: 30
+  vocal_eq: presence_boost_3k_gentle_lowcut_100hz
+  compression: vocal_smooth_3to1
+  master_reference_track: null
+quality_history:
+- run_id: 2026-06-23_morning-darshan-of-khatu-shyam
+  theme: morning darshan of Khatu Shyam
+  mood: slow-emotional
+  judge_score: 96.99
+  voice_similarity: 0.97
+  lufs: -14.0
+  true_peak_dbtp: -4.77
+  loops_used: 0
+  winning_prompt_key: slow_emotional
+  published: false
+- run_id: 2026-06-23_morning-darshan-of-khatu-shyam
+  theme: morning darshan of Khatu Shyam
+  mood: slow-emotional
+  judge_score: 96.99
+  voice_similarity: 0.97
+  lufs: -14.0
+  true_peak_dbtp: -4.77
+  loops_used: 0
+  winning_prompt_key: slow_emotional
+  published: false
+- run_id: 2026-06-23_shyam-baba-sandhya-aarti-live-test
+  theme: Shyam Baba sandhya aarti live test
+  mood: slow-emotional
+  judge_score: 56.91
+  voice_similarity: null
+  lufs: -18.67
+  true_peak_dbtp: -1.0
+  loops_used: 4
+  winning_prompt_key: slow_emotional
+  published: false
+- run_id: 2026-06-23_shyam-baba-evening-aarti-and-gratitude
+  theme: Shyam Baba evening aarti and gratitude
+  mood: slow-emotional
+  judge_score: 88.87
+  voice_similarity: null
+  lufs: -14.44
+  true_peak_dbtp: -1.61
+  loops_used: 4
+  winning_prompt_key: slow_emotional
+  published: false
+- run_id: 2026-06-24_tere-charno-mein-khatu-shyam-cloned-voice
+  theme: tere charno mein - Khatu Shyam (cloned voice)
+  mood: slow-emotional
+  judge_score: 96.99
+  voice_similarity: null
+  lufs: -14.0
+  true_peak_dbtp: -3.0
+  loops_used: 0
+  winning_prompt_key: null
+  published: false
+stats:
+  total_runs: 5
+  total_published: 0
+  avg_judge_score: 87.35

@@ -1,0 +1,40 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+runs/
+output/
+models/
+*.pth
+*.index
+*.ckpt
+hf_space/models/*.pth
+hf_space/models/*.index
+models/datasets/
+downloads/
+.pytest_cache/
+.ruff_cache/
+*.log
+checkpoints.sqlite
+
+qdrant_data/
+
+# Personal voice recordings + temp working files (never publish)
+Sample Audio/
+_custom_lyrics.txt
+_*.txt
+*.wav
+*.mp3
+
+# temp/debug scratch
+cpath.txt
+git*.txt
+commit.txt
+produce_result.json
+_custom_lyrics.txt
+nbcheck.txt

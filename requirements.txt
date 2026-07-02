@@ -1,0 +1,52 @@
+# BhajanForge dependencies
+# NOTE: NO GPU / torch / demucs / rvc here — all heavy AI is CLOUD via APIs.
+# This runs on a normal CPU machine.
+
+# --- Orchestration / agents ---
+langgraph
+langchain
+langchain-core
+pydantic>=2
+
+# --- API / CLI ---
+fastapi
+uvicorn[standard]
+typer
+python-dotenv
+pyyaml
+tenacity            # retries/backoff for cloud API calls
+
+# --- MCP ---
+mcp                 # Model Context Protocol Python SDK
+
+# --- Cloud AI clients ---
+replicate           # cloud RVC train/infer (no local GPU)
+httpx               # generic REST (Suno gateway, LALAL.AI, LANDR, Kits)
+
+# --- Audio DSP / analysis / mastering (CPU) ---
+librosa
+soundfile
+pydub
+pyloudnorm
+numpy
+scipy
+matchering          # free OSS mastering fallback (LANDR API is primary)
+# ffmpeg installed at OS level (see Dockerfile)
+
+# --- RAG ---
+qdrant-client
+
+# --- Media download (KB + training data) ---
+yt-dlp
+
+# --- Publishing (OPTIONAL, off by default; PUBLISH_TARGET=local) ---
+google-api-python-client
+google-auth-oauthlib
+
+# --- Browser agent (optional UI-only fallback; off by default) ---
+browser-use
+
+# --- Dev / test ---
+pytest
+pytest-asyncio
+ruff

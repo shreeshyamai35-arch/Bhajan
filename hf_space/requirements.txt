@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+python-multipart
+soundfile
+numpy<2
+librosa
+faiss-cpu
+praat-parselmouth
+pyworld
+torchcrepe
+ffmpeg-python
+av
+scipy
+tqdm
+einops
+tensorboardX
+audioread

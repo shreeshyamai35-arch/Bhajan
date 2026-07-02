@@ -1,0 +1,32 @@
+# BhajanForge — lightweight stack for constrained machines.
+# Runs ONLY Qdrant (RAG vector DB) + the API. The four MCP servers are omitted
+# because the agents call their logic in-process; you don't need separate
+# containers for a working setup. Reuses the already-built `bhajan-api` image.
+#
+# Usage:
+#   docker compose -f docker-compose.light.yml up -d
+#   curl http://localhost:8000/healthz
+#   docker compose -f docker-compose.light.yml down
+
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+  api:
+    image: bhajan-api:latest          # reuse the image already built by docker-compose.yml
+    build: .                           # (re)build only if the image is missing
+    command: ["bhajanforge", "serve", "--host", "0.0.0.0", "--port", "8000"]
+    env_file: [.env]
+    ports:
+      - "8000:8000"
+    depends_on: [qdrant]
+    volumes:
+      - ./runs:/app/runs
+      - ./output:/app/output
+
+volumes:
+  qdrant_storage:

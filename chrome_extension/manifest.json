@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "BhajanForge",
+  "version": "1.0.0",
+  "description": "Produce devotional bhajans from your browser via the BhajanForge API, and open the free Colab voice trainer.",
+  "action": {
+    "default_title": "BhajanForge",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "permissions": ["storage", "downloads"],
+  "host_permissions": [
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "https://colab.research.google.com/*",
+    "https://*.hf.space/*"
+  ]
+}

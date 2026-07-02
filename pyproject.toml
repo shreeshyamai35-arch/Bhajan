@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bhajanforge"
+version = "1.0.0"
+description = "Autonomous AI system that produces studio-grade devotional bhajans in the artist's cloned voice."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+authors = [{ name = "Shyam Bhajan Artist" }]
+dependencies = [
+    "langgraph",
+    "langchain",
+    "langchain-core",
+    "pydantic>=2",
+    "fastapi",
+    "uvicorn[standard]",
+    "typer",
+    "python-dotenv",
+    "pyyaml",
+    "tenacity",
+    "mcp",
+    "replicate",
+    "httpx",
+    "librosa",
+    "soundfile",
+    "pydub",
+    "pyloudnorm",
+    "numpy",
+    "scipy",
+    "matchering",
+    "qdrant-client",
+    "yt-dlp",
+]
+
+[project.optional-dependencies]
+publish = ["google-api-python-client", "google-auth-oauthlib"]
+browser = ["browser-use"]
+dev = ["pytest", "pytest-asyncio", "ruff"]
+
+[project.scripts]
+bhajanforge = "bhajanforge.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["src/tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

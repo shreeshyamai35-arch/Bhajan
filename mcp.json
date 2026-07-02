@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "suno": {
+      "command": "python",
+      "args": ["-m", "bhajanforge.mcp_servers.suno_mcp"],
+      "env": { "PYTHONPATH": "src" },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "rvc": {
+      "command": "python",
+      "args": ["-m", "bhajanforge.mcp_servers.rvc_mcp"],
+      "env": { "PYTHONPATH": "src" },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "stem": {
+      "command": "python",
+      "args": ["-m", "bhajanforge.mcp_servers.stem_mcp"],
+      "env": { "PYTHONPATH": "src" },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "audio": {
+      "command": "python",
+      "args": ["-m", "bhajanforge.mcp_servers.audio_mcp"],
+      "env": { "PYTHONPATH": "src" },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
